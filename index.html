@@ -186,10 +186,10 @@
             </p>
           </section>
           <section>
-            <p>Data at Rest</p>
+            <p>Data at Rest - Encryption</p>
             <img
               src="images/s3-kms.png"
-              alt="cloudflare waf"
+              alt="encryption"
               style="
                 height: 275px;
                 margin: 0 auto 4rem auto;
@@ -207,32 +207,190 @@
               </small>
             </p>
           </section>
+          <section>
+            <p>Data at Rest - Tokenisation</p>
+            <img
+              src="images/tokenisation.png"
+              alt="tokenisation"
+              style="
+                height: 200px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>
+                    The application presents sensitive data such as a credit
+                    card number to the tokenization API.
+                  </li>
+                  <li>
+                    The tokenization API requests authentication of the
+                    application user.
+                  </li>
+                  <li>The authentication API authenticates the user.</li>
+                  <li>
+                    The tokenization API generates a token for the credit card
+                    number and stores and links the token and the credit card
+                    number in the tokenization database.
+                  </li>
+                  <li>
+                    The tokenization API returns the token to the application.
+                  </li>
+                  <li>
+                    The application stores token in application database in
+                    place of credit card number.
+                  </li>
+                </ol>
+              </small>
+            </p>
+          </section>
         </section>
         <section>
-          <p>Infrastructure Security</p>
-          <img
-            src="images/audit.png"
-            alt="architecture"
-            style="
-              height: 275px;
-              margin: 0 auto 4rem auto;
-              background: transparent;
-            "
-          />
-          <p>
-            <small>
-              <ol>
-                <li>CloudTrail & CloudWatch</li>
-                <li>AWS Trusted Advisor</li>
-                <li>
-                  CIS Benchmarks -
-                  <a href="https://github.com/toniblyx/prowler">prowler</a>
-                </li>
-                <li>Least Privilege Principal - IAM Roles</li>
-                <li>Reduce Attack Vectors</li>
-              </ol>
-            </small>
-          </p>
+          <section>
+            <p>Infrastructure Security Controls</p>
+            <img
+              src="images/audit.png"
+              alt="architecture"
+              style="
+                height: 275px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>CloudTrail & CloudWatch</li>
+                  <li>AWS Trusted Advisor</li>
+                  <li>
+                    CIS Benchmarks -
+                    <a href="https://github.com/toniblyx/prowler">prowler</a>
+                  </li>
+                  <li>Least Privilege Principal - IAM Roles</li>
+                  <li>Reduce Attack Vectors</li>
+                </ol>
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>Layered Controls</p>
+            <img
+              src="images/layered-controls.png"
+              alt="layered controls"
+              style="
+                height: 275px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>Layers of security controls throughout the Stack</li>
+                  <li>IAM controls - multiple layers</li>
+                  <li>Infrastructure Security</li>
+                  <li>Data protection (encryption & tokenization)</li>
+                </ol>
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>Networking Isolation</p>
+            <img
+              src="images/network-layers.png"
+              alt="network layers"
+              style="
+                height: 275px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>Security Zone Modeling</li>
+                  <li>Restricted VPC only accessible through VPC endpoints</li>
+                  <li>Traffic confined to network & not exposed externally</li>
+                  <li>
+                    DB access restriced to internal resources within the VPC
+                  </li>
+                </ol>
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>Swim Lane Isolation</p>
+            <img
+              src="images/swim-lane.png"
+              alt="swim lane"
+              style="
+                height: 275px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ul>
+                  <li>Strict network seperation of domains</li>
+                </ul>
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>Application Layer Threat Prevention</p>
+            <img
+              src="images/waf.png"
+              alt="network layers"
+              style="
+                height: 275px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ul>
+                  <li>
+                    <a
+                      href="https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project"
+                      >OWASP Top 10</a
+                    >
+                  </li>
+                </ul>
+              </small>
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <p>Infrastructure Detective Controls</p>
+            <img
+              src="images/detective.png"
+              alt="detective"
+              style="
+                height: 275px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>CloudTrail Audit Logs</li>
+                  <li>VPC Flow Logs</li>
+                  <li>AWS Guard Duty</li>
+                  <li>
+                    Configuration Drift - continually compare against basemarks
+                    in AWS Config
+                  </li>
+                </ol>
+              </small>
+            </p>
+          </section>
+          <section></section>
         </section>
       </div>
     </div>
