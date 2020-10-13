@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <a
+            href="https://coderturtle.github.io/cloud-gremlin-datalake-presentation/"
+          >
+            <img
+              src="images/cloud-gremlin-blk.png"
+              alt="gremlins"
+              style="
+                height: 180px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+              class="demo-logo"
+            />
+          </a>
+          <h3>Data Lake on AWS</h3>
+          <p>
+            <small>Derm Duncan</small>
+          </p>
+        </section>
+        <section>
+          <section>
+            <p>Sample architecture</p>
+            <img
+              src="images/architecture.png"
+              alt="architecture"
+              style="
+                height: 480px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+              class="demo-logo"
+            />
+            <p>
+              <small>
+                <a
+                  href="https://aws.amazon.com/solutions/implementations/data-lake-solution/"
+                  >AWS Solutions Implementation</a
+                >
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>
+              <small>
+                <ol>
+                  <li>
+                    Static Console Site hosted in S3 and served via Cloudfront
+                  </li>
+                  <li>Stores data in native form in S3</li>
+                  <li>
+                    Transforms & Analyzes Data - Glue
+                    <ol>
+                      <li>Crawls Data Sources</li>
+                      <li>Identifies Data Formats</li>
+                      <li>Suggests Schemas & Transformations</li>
+                    </ol>
+                  </li>
+                  <li>
+                    User-defined tags add business context to datasets -
+                    DynamoDB
+                  </li>
+                  <li>Governance policies segregate data with specifc tags</li>
+                  <li>APIs to interact with data - API Gateway</li>
+                  <ol>
+                    <li>Create Data Packages</li>
+                    <li>Upload Data</li>
+                    <li>Search for Existing Packages</li>
+                    <li>Generate Data Manifests</li>
+                    <li>Perform Admin Duties</li>
+                  </ol>
+                  <li>Auditing available - CloudWatch</li>
+                </ol>
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>Features</p>
+            <p>
+              <small>
+                <ol>
+                  <li>Data lake reference implementation</li>
+                  <li>
+                    User interface
+                    <ol>
+                      <li>Manage Data Lake Users</li>
+                      <li>Manage Data Lake Policies</li>
+                      <li>Add/Remove Packages</li>
+                      <li>Search</li>
+                      <li>Create Manifests for additional analysis</li>
+                    </ol>
+                  </li>
+                  <li>CLI/API for integration into existing data automation</li>
+                  <li>
+                    Manage data storage in S3 and encrypt data at rest using KMS
+                  </li>
+                  <li>
+                    Leverage pre-signed S3 urls or IAM roles to control access
+                    to datasets
+                  </li>
+                  <li>
+                    Integrates with AWS Glue & Athena to transform & analyze the
+                    data
+                  </li>
+                  <li>Ability to federate SSO</li>
+                </ol>
+              </small>
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <p>App Security</p>
+            <img
+              src="images/app-security.png"
+              alt="reverse proxy"
+              style="
+                height: 320px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>Console - Cognito User Pool</li>
+                  <li>API - SSL & Access Keys</li>
+                  <li>CLI - Secret Keys</li>
+                </ol>
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>Data in Transit</p>
+            <img
+              src="images/static-site.png"
+              alt="static-site"
+              style="
+                height: 220px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <img
+              src="images/cloudfront-https.png"
+              alt="https only"
+              style="
+                height: 220px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>SSL - Cloudfront serves HTTPS requests only</li>
+                  <li>Signed S3 URLs</li>
+                  <li>IAM Policies</li>
+                </ol>
+              </small>
+            </p>
+          </section>
+          <section>
+            <p>Data at Rest</p>
+            <img
+              src="images/s3-kms.png"
+              alt="cloudflare waf"
+              style="
+                height: 275px;
+                margin: 0 auto 4rem auto;
+                background: transparent;
+              "
+            />
+            <p>
+              <small>
+                <ol>
+                  <li>S3 SSE-KMS</li>
+                  <li>KMS generates encryption keys</li>
+                  <li>S3 encrypts object using KMS key</li>
+                  <li>S3 stores encrypted object & encrypted key</li>
+                </ol>
+              </small>
+            </p>
+          </section>
+        </section>
+        <section>
+          <p>Infrastructure Security</p>
+          <img
+            src="images/audit.png"
+            alt="architecture"
+            style="
+              height: 275px;
+              margin: 0 auto 4rem auto;
+              background: transparent;
+            "
+          />
+          <p>
+            <small>
+              <ol>
+                <li>CloudTrail & CloudWatch</li>
+                <li>AWS Trusted Advisor</li>
+                <li>
+                  CIS Benchmarks -
+                  <a href="https://github.com/toniblyx/prowler">prowler</a>
+                </li>
+                <li>Least Privilege Principal - IAM Roles</li>
+                <li>Reduce Attack Vectors</li>
+              </ol>
+            </small>
+          </p>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
